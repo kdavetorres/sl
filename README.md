@@ -9,3 +9,11 @@
  ```
  npm i express mongoose passport passport-local cookie-session
  ```
+
+ #### Short Package Description
+ - express : to create our server.
+ - mongoose : to connect to our database.
+ - passport : our main package for signup and login including Google and Github.
+ - passport-local : module lets you authenticate using a username and password in your Node. By plugging into Passport, local   authentication can be easily and unobtrusively integrated into any application or framework that supports Connect-style middleware, including Express.
+
+ 
