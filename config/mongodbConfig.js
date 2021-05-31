@@ -1,6 +1,7 @@
 /* Database Configuration */
 const mongoose = require(`mongoose`);
 
+// mongodb connection - (cluster connection string)
 mongoose.connect(`mongodb + srv://dbUser:<password>@cluster0.1tfvd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,
  {
   useNewUrlParser: true,
