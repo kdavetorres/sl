@@ -21,6 +21,59 @@
   <input type="password" name="" id="loginPassword">
   <button>Login</button>
  </form>
+
+ <script>
+  const signup_form = document.querySelector('#signupForm');
+  const login_form = document.querySelector('#loginForm');
+
+  const signup_email = document.querySelector('#signupEmail');
+  const signup_password = document.querySelector('#signupPassword');
+  const signup_username = document.querySelector('#signupUsername');
+
+  const login_email = document.querySelector('#loginEmail');
+  const login_password = document.querySelector('#loginPassword');
+
+  /* Signup Form Submit */
+  signup_form.addEventListener('submit', async (e) => {
+   e.preventDefault(); // avoid page to reload while submitting the form
+
+   const response = await fetch('/signup', {
+    method: 'POST',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+     email: signup_email.value,
+     password: signup_password.value,
+     username: signup_username.value
+    })
+   });
+
+   const data = await data.json();
+   console.log(data);
+  });
+
+
+  /* Login Form Submit */
+  login_form.addEventListener('submit', async (e) => {
+   e.preventDefault(); // avoid page to reload while submitting the form
+
+   const response = await fetch('/login', {
+    method: 'POST',
+    headers: {
+     'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+     email: login_email.value,
+     password: login_password.value
+    })
+   });
+
+   const data = await data.json();
+   console.log(data);
+  });
+ </script>
+
 </body>
 
 </html>
