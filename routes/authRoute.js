@@ -31,7 +31,27 @@ router.post(`/signup`, (req, res, next) => {
    // if there is any error while logging in, send the error message
    if (err) return res.status(500).json({ msg: `Oops, something went wrong.` });
 
+   // if everything is OK, send the user data onto the Cookie-fyer
    return res.json(user);
   })
  })(req, res, next)
 })
+
+
+/* Login */
+router.post(`/login`, (req, res, next) => {
+ passport.authenticate(`local-login`, (err, user, info) => { // passport middleware auth
+  // error message
+  if (err) return res.status(400).json(err);
+
+  req.logIn(user, (err) => { // if there is no error, log them in
+   if (err) return res.status(500).json({ msg: `Oops, something went wrong.` });   // error message
+
+   // if everything is OK, send the user data onto the Cookie-fyer
+   return res.json(user);
+  })
+ })(req, res, next)
+})
+
+
+module.exports = router;
