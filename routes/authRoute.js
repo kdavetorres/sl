@@ -18,3 +18,20 @@ router.get(`/user`, (req, res) => {
   res.json({ msg: `Please login to access this data` });
  }
 });
+
+
+/* Signup */
+router.post(`/signup`, (req, res, next) => {
+ passport.authenticate(`local-signup`, (err, user, info) => { // this is our passport authenticating middlewar
+  // if there is any error send back the error with that error message to the user
+  if (err) return res.status(400).json(err);
+
+  // if there is no error in sign up, it'll create their account.
+  req.logIn(user, (user) => {
+   // if there is any error while logging in, send the error message
+   if (err) return res.status(500).json({ msg: `Oops, something went wrong.` });
+
+   return res.json(user);
+  })
+ })(req, res, next)
+})
